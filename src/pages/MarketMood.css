@@ -1,0 +1,427 @@
+.market-mood-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+}
+
+.market-mood-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.market-mood-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.market-mood-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #2575fc;
+  margin: 2rem auto;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mood Meter Section */
+.mood-meter-section {
+  margin-bottom: 3rem;
+}
+
+.mood-meter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mood-meter {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mood-meter-gauge {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: linear-gradient(to right, 
+    #ff3547 0%, /* Extreme Fear */
+    #ff9f1c 25%, /* Fear */
+    #ffdd00 50%, /* Neutral */
+    #70e000 75%, /* Greed */
+    #00c853 100% /* Extreme Greed */
+  );
+  border-top-left-radius: 150px;
+  border-top-right-radius: 150px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.mood-meter-needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 140px;
+  background-color: #333;
+  transform-origin: bottom center;
+  transform: rotate(0deg);
+  transition: transform 1s ease-in-out;
+  z-index: 2;
+}
+
+.mood-meter-center {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  justify-content: center;
+}
+
+.mood-value {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.mood-label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.mood-change {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.mood-meter-scale {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.scale-marker {
+  font-size: 0.7rem;
+  text-align: center;
+  width: 20%;
+  font-weight: bold;
+}
+
+.scale-marker.extreme-fear { color: #ff3547; }
+.scale-marker.fear { color: #ff9f1c; }
+.scale-marker.neutral { color: #ffdd00; }
+.scale-marker.greed { color: #70e000; }
+.scale-marker.extreme-greed { color: #00c853; }
+
+.mood-info {
+  width: 100%;
+  max-width: 600px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.mood-update-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.mood-description {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mood-description svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #2575fc;
+}
+
+/* Historical Data Section */
+.mood-history-section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.timeframe-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.timeframe-btn {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timeframe-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.timeframe-btn.active {
+  background-color: #2575fc;
+  color: white;
+}
+
+.mood-chart {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chart-container {
+  display: flex;
+  height: 300px;
+  margin-bottom: 1rem;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 10px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.chart-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 100%;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  position: relative;
+}
+
+.chart-bar {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.chart-bar:hover::after {
+  content: attr(data-date) " - " attr(data-value) " (" attr(data-status) ")";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.bar-fill {
+  width: 100%;
+  background-color: #2575fc;
+  transition: height 0.5s;
+}
+
+.chart-x-axis {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.7rem;
+  margin-left: 30px;
+  overflow-x: auto;
+}
+
+.x-label {
+  transform: rotate(-45deg);
+  transform-origin: top left;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+/* Indicators Section */
+.mood-indicators-section {
+  margin-bottom: 3rem;
+}
+
+.indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.indicator-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.indicator-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.indicator-meter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.indicator-bar {
+  flex-grow: 1;
+  height: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.indicator-fill {
+  height: 100%;
+  background-color: #2575fc;
+  transition: width 0.5s;
+}
+
+.indicator-value {
+  font-weight: bold;
+  min-width: 30px;
+  text-align: right;
+}
+
+.indicator-status {
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Explanation Section */
+.mood-explanation-section {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.explanation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.explanation-item h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #2575fc;
+}
+
+.interpretation-levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.level {
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.level h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.level p {
+  font-size: 0.9rem;
+}
+
+.level.extreme-fear { border-color: #ff3547; }
+.level.fear { border-color: #ff9f1c; }
+.level.neutral { border-color: #ffdd00; }
+.level.greed { border-color: #70e000; }
+.level.extreme-greed { border-color: #00c853; }
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .mood-meter-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .mood-meter {
+    flex: 1;
+  }
+  
+  .mood-info {
+    flex: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .timeframe-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .timeframe-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .interpretation-levels {
+    grid-template-columns: 1fr;
+  }
+}

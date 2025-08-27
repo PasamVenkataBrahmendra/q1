@@ -1,0 +1,10 @@
+/* AnimatedNumber.css */
+.animated-number {
+  display: inline-block;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.animated-number:hover {
+  color: var(--primary-color);
+}

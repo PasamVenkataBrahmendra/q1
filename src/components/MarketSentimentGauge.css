@@ -1,0 +1,164 @@
+/* components/MarketSentimentGauge.css */
+
+.market-sentiment-gauge {
+  background-color: #1e2130;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.gauge-title {
+  color: #ffffff;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 40px;
+  height: 40px;
+  margin: 40px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Gauge styling */
+.gauge-container {
+  position: relative;
+  height: 150px;
+  margin: 20px 0;
+}
+
+.gauge {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.gauge-scale {
+  position: absolute;
+  width: 100%;
+  height: 150px;
+  border-radius: 150px 150px 0 0;
+  background: linear-gradient(90deg, 
+    #e74c3c 0%, 
+    #e67e22 25%, 
+    #f1c40f 50%, 
+    #2ecc71 75%, 
+    #27ae60 100%);
+  overflow: hidden;
+}
+
+.scale-label {
+  position: absolute;
+  bottom: 5px;
+  font-size: 0.8rem;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+.scale-label.bearish {
+  left: 10%;
+}
+
+.scale-label.neutral {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scale-label.bullish {
+  right: 10%;
+}
+
+.gauge-needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 120px;
+  background-color: #fff;
+  transform-origin: bottom center;
+  transform: rotate(0deg);
+  transition: transform 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.gauge-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Sentiment info */
+.sentiment-info {
+  margin: 20px 0;
+  transition: color 0.5s ease;
+}
+
+.sentiment-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.sentiment-category {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.sentiment-details {
+  color: #bdc3c7;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sentiment-details p {
+  margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .market-sentiment-gauge {
+    padding: 15px;
+  }
+  
+  .gauge-container {
+    height: 120px;
+  }
+  
+  .gauge {
+    height: 120px;
+  }
+  
+  .gauge-scale {
+    height: 120px;
+  }
+  
+  .gauge-needle {
+    height: 100px;
+  }
+  
+  .sentiment-value {
+    font-size: 2rem;
+  }
+}

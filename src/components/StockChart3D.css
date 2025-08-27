@@ -1,0 +1,106 @@
+.stock-chart-3d {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stock-chart-3d canvas {
+  outline: none;
+}
+
+.chart-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(10, 11, 30, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+.chart-legend {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(10, 11, 30, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.price-color {
+  background-color: #6c63ff;
+}
+
+.volume-color {
+  background-color: #00d4ff;
+}
+
+.prediction-up {
+  background-color: #00c853;
+}
+
+.prediction-down {
+  background-color: #ff3d00;
+}
+
+.chart-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .stock-chart-3d {
+    height: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stock-chart-3d {
+    height: 300px;
+  }
+  
+  .chart-overlay,
+  .chart-legend {
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+}
